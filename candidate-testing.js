@@ -30,28 +30,29 @@ function askQuestion() {
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
     
 
-    if (candidateAnswer == correctAnswers[i]) {
+    if (candidateAnswer.toLowerCase() == correctAnswers[i].toLowerCase()) {
       console.log("Yes, that's right!")}      
       else {
       console.log("Oh, that's wrong.")
       }
 
       candidateAnswers.push(candidateAnswer)
-} 
+    } 
 } 
 function gradeQuiz(candidateAnswers) {
 
-  let grade = 0  //TODO 3.2 use this variable to calculate the candidates score.
+      //TODO 3.2 use this variable to calculate the candidates score.
+  let numCorrectAnswers = 0
   for (i=0; i < questions.length; i++) {
-    if (candidateAnswers[i] == correctAnswers[i]) {
-      grade = (grade + 20)
-}     else {
-      grade = (grade + 0)
-}
-}
+    if (candidateAnswers[i].toLowerCase() == correctAnswers[i].toLowerCase()) {
+      numCorrectAnswers++
+    }
+  }
+
+    let grade = (numCorrectAnswers / questions.length * 100)
     console.log(`\nWell done. Let's see how you did.\n\nYOU SCORED ${grade}%!\n\nAMAZING!!!`)
   return grade;
-  }
+}
 
 function runProgram() {
   askForName();
